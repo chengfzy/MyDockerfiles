@@ -104,22 +104,20 @@ RUN apt-get install -y cmake doxygen clang-format-10 qt5-default libgoogle-glog-
     libtbb-dev libtbb2 libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libopenblas-dev libatlas-cpp-0.6-dev \
     liblapacke-dev libfreetype6-dev libharfbuzz-dev \
     # install jasper
-    && add-apt-repository "deb http://security.ubuntu.com/ubuntu xenial-security main" \
+    && echo "deb http://security.ubuntu.com/ubuntu xenial-security main" >> /etc/apt/sources.list \
+    && apt-get update \
     && apt-get install libjasper-dev \
     # contrib modules dependency
-    # && apt-get install libhdf5-dev libtesseract-dev libleptonica-dev \
+    && apt-get install libhdf5-dev libtesseract-dev libleptonica-dev \
     && wget https://github.com/opencv/opencv/archive/4.4.0.tar.gz -O /home/code/OpenCV.tar.gz \
     && tar -zxvf ./OpenCV.tar.gz \
+    && tar -zxvf ./OpenCVContrib.tar.gz \
     && cd ./opencv-4.4.0 \
     && mkdir build \
     && cd ./build \
     && cmake -DCMAKE_BUILD_TYPE=Release -DBUILD_DOCS=ON -DWITH_QT=ON -DBUILD_PERF_TESTS=OFF -DBUILD_TESTS=OFF \
     -DJPEG_INCLUDE_DIR:PATH="/usr/local/include" -DJPEG_LIBRARY_RELEASE:FILEPATH="/usr/local/lib/libjpeg.so" \
-    # -DPYTHON3_PACKAGES_PATH:PATH="/opt/anaconda3/lib/python3.8/site-packages" \
-    # -DPYTHON3_LIBRARY:FILEPATH="/opt/anaconda3/lib/libpython3.8.so" \
-    # -DPYTHON3_INCLUDE_DIR:PATH="/opt/anaconda3/include/python3.8" \
-    # -DPYTHON3_NUMPY_INCLUDE_DIRS:PATH="/opt/anaconda3/lib/python3.8/site-packages/numpy/core/include" \
-    # -DPYTHON3_EXECUTABLE:FILEPATH="/opt/anaconda3/bin/python3" \
+    -DOPENCV_EXTRA_MODULES_PATH:PATH="../../opencv_contrib-4.4.0/modules" \
     -DOPENCV_ENABLE_NONFREE=ON .. \
     && make -j4 \
     && make -j4 doxygen \
