@@ -110,6 +110,7 @@ RUN apt-get install -y cmake doxygen clang-format-10 qt5-default libgoogle-glog-
     # contrib modules dependency
     && apt-get install -y libhdf5-dev libtesseract-dev libleptonica-dev \
     && wget https://github.com/opencv/opencv/archive/4.4.0.tar.gz -O /home/code/OpenCV.tar.gz \
+    && wget https://github.com/opencv/opencv_contrib/archive/4.4.0.tar.gz -O /home/code/OpenCVContrib.tar.gz \
     && tar -zxvf ./OpenCV.tar.gz \
     && tar -zxvf ./OpenCVContrib.tar.gz \
     && cd ./opencv-4.4.0 \
