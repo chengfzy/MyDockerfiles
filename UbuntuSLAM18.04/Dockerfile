@@ -100,7 +100,7 @@ RUN apt-get install -y cmake doxygen clang-format-10 qt5-default libgoogle-glog-
     && make install \
     && cd /home/code \
     # 3.8 OpenCV
-    && apt-get install -y ibgtk-3-dev pkg-config libavcodec-dev libavformat-dev libavresample-dev libswscale-dev \
+    && apt-get install -y libgtk-3-dev pkg-config libavcodec-dev libavformat-dev libavresample-dev libswscale-dev \
     libtbb-dev libtbb2 libjpeg-dev libpng-dev libtiff-dev libdc1394-22-dev libopenblas-dev libatlas-cpp-0.6-dev \
     liblapacke-dev libfreetype6-dev libharfbuzz-dev \
     # install jasper
