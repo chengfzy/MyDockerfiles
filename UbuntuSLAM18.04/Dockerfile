@@ -106,9 +106,9 @@ RUN apt-get install -y cmake doxygen clang-format-10 qt5-default libgoogle-glog-
     # install jasper
     && echo "deb http://security.ubuntu.com/ubuntu xenial-security main" >> /etc/apt/sources.list \
     && apt-get update \
-    && apt-get install libjasper-dev \
+    && apt-get install -y libjasper-dev \
     # contrib modules dependency
-    && apt-get install libhdf5-dev libtesseract-dev libleptonica-dev \
+    && apt-get install -y libhdf5-dev libtesseract-dev libleptonica-dev \
     && wget https://github.com/opencv/opencv/archive/4.4.0.tar.gz -O /home/code/OpenCV.tar.gz \
     && tar -zxvf ./OpenCV.tar.gz \
     && tar -zxvf ./OpenCVContrib.tar.gz \
