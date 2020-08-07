@@ -12,7 +12,11 @@ RUN apt-get update -y \
     && apt-get dist-upgrade -y \
     && apt-get autoremove -y \
     # basic tools
-    && apt-get install -y tree vim wget p7zip zip unzip curl build-essential
+    && apt-get install -y software-properties-common tree vim wget p7zip zip unzip curl build-essential \
+    # install git
+    && add-apt-repository -y ppa:git-core/ppa \
+    && apt update \
+    && apt install -y git
 
 # 2. anaconda
 # RUN  wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2020.07-Linux-x86_64.sh -O ~/anaconda.sh \
