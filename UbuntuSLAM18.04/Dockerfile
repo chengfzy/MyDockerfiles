@@ -39,6 +39,7 @@ RUN apt-get install -y cmake doxygen clang-format-10 qt5-default libgoogle-glog-
     # 3.0 init
     && mkdir /home/code \
     && cd /home/code \
+    && ln -s /usr/bin/clang-format-10 /usr/bin/clang-format \
     # 3.1 gtest
     && wget https://github.com/google/googletest/archive/release-1.10.0.tar.gz -O /home/code/gtest.tar.gz \
     && tar -zxvf ./gtest.tar.gz \
