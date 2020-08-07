@@ -11,12 +11,20 @@ RUN apt-get update -y \
     && apt-get update \
     && apt-get dist-upgrade -y \
     && apt-get autoremove -y \
-    # basic tools
+    # 1.1 basic tools
     && apt-get install -y software-properties-common tree vim wget p7zip zip unzip curl build-essential \
-    # install git
+    # 1.2 install git
     && add-apt-repository -y ppa:git-core/ppa \
     && apt update \
-    && apt install -y git
+    && apt install -y git \
+    # 1.3 install zsh
+    && apt-get install -y zsh \
+    && chsh -s /bin/zsh \
+    && sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" \
+    && sed -i 's/^ZSH_THEME=.*/ZSH_THEME=\"agnoster\"/' ~/.zshrc \
+    && sed -i 's/^# HIST_STAMPS=.*/HIST_STAMPS=\"yyyy-mm-dd\"/' ~/.zshrc \
+    && sed -i 's/^plugins=.*/plugins=(git)/' ~/.zshrc \
+    && echo "DEFAULT_USER=\"root\"" >> ~/.zshrc 
 
 # 2. anaconda
 # RUN  wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2020.07-Linux-x86_64.sh -O ~/anaconda.sh \
